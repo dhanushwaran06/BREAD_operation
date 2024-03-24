@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><TMPL_VAR DEF></title>
+      <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <h2><TMPL_VAR GREET></h2>
+    <form id="primaryForm" action="server.php" method="POST">
+
+      <TMPL_LOOP NAME="form_fields">
+
+        <label for="<TMPL_VAR ID>"><TMPL_VAR LABEL></label><br />
+        
+        <TMPL_IF IS_TEXTAREA>
+          <textarea id="<TMPL_VAR ID>" name="<TMPL_VAR NAME>" rows="<TMPL_VAR ROW>" cols="<TMPL_VAR COL>" required="<TMPL_VAR IS_REQUIRED>"><TMPL_VAR VALUE></textarea><br />
+        </TMPL_IF>    
+            
+        <TMPL_IF IS_SELECT>
+          <select id="<TMPL_VAR ID>" name="<TMPL_VAR NAME>" rows="<TMPL_VAR ROW>" cols="<TMPL_VAR COL>" required="<TMPL_VAR IS_REQUIRED>" class="form-select">
+            <TMPL_VAR VALUE>
+            <TMPL_LOOP OPTION_DATA>
+              <option value="<TMPL_VAR V>"><TMPL_VAR L></option>
+            </TMPL_LOOP>
+          </select><br />
+          
+        </TMPL_IF>     
+
+        <TMPL_IF IS_TEXT>
+          <input type="<TMPL_VAR TYPE>" id="<TMPL_VAR ID>" name="<TMPL_VAR NAME>" value="<TMPL_VAR VALUE>"
+            <TMPL_IF MIN_LEN>min="<TMPL_VAR MIN_LEN>"</TMPL_IF> 
+               max="<TMPL_VAR MAX_LEN>" required="<TMPL_VAR IS_REQUIRED>"><br />
+        </TMPL_IF>
+
+        <!-- <TMPL_IF IS_HIDDEN>
+          <input type="<TMPL_VAR TYPE>" name="<TMPL_VAR NAME>" VALUE="<TMPL_VAR VALUE>">
+        </TMPL_IF> -->
+
+        <!-- <TMPL_IF IS_BUTTON>
+          <button type="<TMPL_VAR TYPE>" name="<TMPL_VAR NAME>" id="<TMPL_VAR ID>" class="btn"></button>
+        </TMPL_IF> -->
+        
+      </TMPL_LOOP> 
+
+      <input type="hidden" id="def" name="def" value="<TMPL_VAR DEF>">
+      
+      <button type="submit" id="FORM_POST" name="FORM_POST"> Submit</button>
+      <button type="reset">Reset</button>  
+
+     </form>
+    <script src="./js/home.js"></script>
+
+</body>
+</html>
+
