@@ -3,10 +3,10 @@
         function db_connect(){
                 
                 // connect
-                $dbh = mysqli_connect("db177.pair.com", # host
-                                      "o2d3_2",      # user 
-                                      "WZym8FwQnaawUCEn",          # password
-                                      "o2d3_pg"   # db 
+                $dbh = mysqli_connect("", # host
+                                      "",      # user 
+                                      "",          # password
+                                      ""   # db 
                                 );
                         
                 // check connection
